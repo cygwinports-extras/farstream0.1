@@ -1,0 +1,30 @@
+inherit python gstreamer gnome2
+
+DESCRIPTION="Farstream Audio/Video communications framework"
+HOMEPAGE="http://farstream.freedesktop.org/wiki/"
+SRC_URI="http://freedesktop.org/software/farstream/releases/${PN}/${P}.tar.gz"
+PATCH_URI="
+	0.1.2-as-needed.patch
+	0.1.2-gtk-doc.patch
+	0.1.2-parallel-make.patch
+"
+
+PKG_NAMES="libfarstream0.1_0 libfarstream0.1-devel gstreamer0.10-plugins-${PN}
+           girepository-Farstream0.1 python-farstream"
+libfarstream0_1_0_CONTENTS="usr/bin/cygfarstream-0.1-0.dll usr/lib/${PN}-0.1/ usr/share/doc/"
+libfarstream0_1_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig
+                                   usr/share/gtk-doc/html/farstream-libs-*/"
+gstreamer0_10_plugins_farstream_CONTENTS="usr/lib/gstreamer-0.10/ usr/share/${PN}/
+                                          usr/share/gtk-doc/html/farstream-plugins-*/"
+girepository_Farstream0_1_CONTENTS="usr/*/gir*/Farstream-0.1.*"
+python_farstream_CONTENTS="${PYTHON_SITELIB#/}/farstream.dll"
+
+src_compile() {
+	cd ${S}
+	gstreamer_autoreconf
+	cd ${B}
+	gnome2_configure
+	cygmake farstream_la_LDFLAGS="-module -avoid-version -no-undefined ${LIBPYTHON}"
+}
+
+KEEP_LA_FILES="none"

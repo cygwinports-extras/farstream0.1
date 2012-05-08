@@ -1,0 +1,9 @@
+category: Net
+requires: libfarstream0.1_0 libglib2.0-devel libgstreamer0.10-devel
+external-source: farstream
+sdesc: "A/V conferencing library (development)"
+ldesc: "The Farstream project is an effort to create a framework to deal 
+with all known audio/video conferencing protocols. On one side it offers 
+a generic API that makes it possible to write plugins for different 
+streaming protocols, on the other side it offers an API for clients to 
+use those plugins."

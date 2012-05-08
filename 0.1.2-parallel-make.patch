@@ -1,0 +1,10 @@
+--- origsrc/farstream-0.1.2/farstream/Makefile.am	2012-03-15 18:17:32.000000000 -0500
++++ src/farstream-0.1.2/farstream/Makefile.am	2012-05-07 20:55:25.189936300 -0500
+@@ -96,6 +96,7 @@ introspection_sources = \
+ 	$(libfarstreaminclude_HEADERS)
+ 
+ INTROSPECTION_GIRS = Farstream-@FS_MAJORMINOR@.gir
++Farstream-@FS_MAJORMINOR@.gir: libfarstream-@FS_MAJORMINOR@.la
+ Farstream_@FS_MAJOR_MINOR@_gir_NAMESPACE = Farstream
+ Farstream_@FS_MAJOR_MINOR@_gir_VERSION = @FS_MAJORMINOR@
+ Farstream_@FS_MAJOR_MINOR@_gir_LIBS = libfarstream-@FS_MAJORMINOR@.la
