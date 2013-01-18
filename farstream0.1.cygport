@@ -2,7 +2,7 @@ inherit python gstreamer gnome2
 
 NAME="farstream0.1"
 VERSION=0.1.2
-RELEASE=1
+RELEASE=2
 CATEGORY="Net"
 SUMMARY="A/V conferencing library"
 DESCRIPTION="The Farstream project is an effort to create a framework to deal
@@ -16,6 +16,7 @@ PATCH_URI="
 	0.1.2-as-needed.patch
 	0.1.2-gtk-doc.patch
 	0.1.2-parallel-make.patch
+	0.1.2-introspection.patch
 "
 
 PKG_NAMES="libfarstream0.1_0 libfarstream0.1-devel gstreamer0.10-plugins-farstream
@@ -28,6 +29,8 @@ gstreamer0_10_plugins_farstream_CONTENTS="usr/lib/gstreamer-0.10/ usr/share/fars
 girepository_Farstream0_1_CONTENTS="usr/*/gir*/Farstream-0.1.*"
 python_farstream_REQUIRES="python-gobject python-gst0.10"
 python_farstream_CONTENTS="${PYTHON_SITELIB#/}/farstream.dll"
+
+DISTCLEANFILES="farstream/*.gir"
 
 src_compile() {
 	cd ${S}

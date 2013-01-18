@@ -1,0 +1,58 @@
+--- origsrc/farstream-0.1.2/farstream/fs-session.c	2012-03-06 15:47:43.000000000 -0600
++++ src/farstream-0.1.2/farstream/fs-session.c	2013-01-17 19:16:15.576093800 -0600
+@@ -271,7 +271,7 @@ fs_session_class_init (FsSessionClass *k
+    * FsSession:codec-preferences:
+    *
+    * Type: GLib.List(FsCodec)
+-   * Transfer: full
++   * (transfer full)
+    *
+    * This is the current preferences list for the local codecs. It is
+    * set by the user to specify the codec options and priorities. The user may
+@@ -297,7 +297,7 @@ fs_session_class_init (FsSessionClass *k
+    * FsSession:codecs:
+    *
+    * Type: GLib.List(FsCodec)
+-   * Transfer: full
++   * (transfer full)
+    *
+    * This is the list of codecs used for this session. It will include the
+    * codecs and payload type used to receive media on this session. It will
+@@ -330,7 +330,7 @@ fs_session_class_init (FsSessionClass *k
+    * FsSession:codecs-without-config:
+    *
+    * Type: GLib.List(FsCodec)
+-   * Transfer: full
++   * (transfer full)
+    *
+    * This is the same list of codecs as #FsSession:codecs without
+    * the configuration information that describes the data sent. It is suitable
+--- origsrc/farstream-0.1.2/farstream/fs-stream.c	2012-01-10 14:34:46.000000000 -0600
++++ src/farstream-0.1.2/farstream/fs-stream.c	2013-01-17 19:18:03.123750600 -0600
+@@ -177,7 +177,7 @@ fs_stream_class_init (FsStreamClass *kla
+    * FsStream:remote-codecs:
+    *
+    * Type: GLib.List(FsCodec)
+-   * Transfer: full
++   * (Transfer full)
+    *
+    * This is the list of remote codecs for this stream. They must be set by the
+    * user as soon as they are known using fs_stream_set_remote_codecs()
+@@ -196,7 +196,7 @@ fs_stream_class_init (FsStreamClass *kla
+    * FsStream:negotiated-codecs:
+    *
+    * Type: GLib.List(FsCodec)
+-   * Transfer: full
++   * (transfer full)
+    *
+    * This is the list of negotiatied codecs, it is the same list as the list
+    * of #FsCodec from the parent #FsSession, except that the codec config data
+@@ -217,7 +217,7 @@ fs_stream_class_init (FsStreamClass *kla
+    * FsStream:current-recv-codecs:
+    *
+    * Type: GLib.List(FsCodec)
+-   * Transfer: full
++   * (transfer full)
+    *
+    * This is the list of codecs that have been received by this stream.
+    * The user must free the list if fs_codec_list_destroy().
